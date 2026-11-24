@@ -1,10 +1,6 @@
 var express = require('express');
 var ALLOWED_IPS = ["127.0.0.1", "::1","123.456.7.89"];
 var path = require("path");
-var fs = require("fs");
-
-var ordersFile = path.resolve(__dirname,"../orders.json");
-
 
 module.exports = function(db) {
     var api = express.Router();
@@ -32,35 +28,33 @@ module.exports = function(db) {
         {id: 1010, class: 'Karate', rating: 1, location: 'Sharjah, Wanderers Club', price: 200, image: 'images/karate.png', availableInventory: 10, quantity: 0}
     ];
 
-    api.get("/lessons", function(request, response) {
-        response.json(activity);
-        console.log("Activities converted to json");
-    });
-
-    api.get("/orders", function(request, response) {
-        fs.readFile(ordersFile, 'utf8', function(error, data) {
-            if(error) {
-                response.json("No orders found.");
-                return;
-            }
-            var orders = JSON.parse(data); 
-            response.json(orders); 
-        })
-    })
-
-    api.post("/lessons", async function(request, response) {
-        try {
-            await db.collection("lesson").insertMany(activity);
-            response.json("Lessons inserted successfully")
-
-        } catch (error) {
-            console.error(error);
-            response.status(500).json({
-                message: "Lessons not found"
-            });
+    db.collection("lesson").countDocuments()
+    .then(function(count) {
+        if(count == 0) {
+            db.collection("lesson").insertMany(activity);
+            console.log("Lessons added tp MongoDB");
         }
-
     });
+
+    api.get("/lessons", async function(request, response) {
+        try {
+            var lessons = await db.collection("lesson").find().toArray();
+            response.json(lessons);
+        } catch(error) {
+            console.log(error);
+            response.status(500).json("Could not retrieve lessons");
+        }
+    });
+
+    api.get("/orders", async function(request, response) {
+        try {
+            var orders = await db.collection("order").find().toArray();
+            response.json(orders);
+        } catch(err) {
+            console.log(err);
+            response.status(500).json("Could not retrieve orders")
+        }
+    })
 
     api.post("/orders", async function(request, response) {
         var body = request.body;
@@ -75,19 +69,7 @@ module.exports = function(db) {
 
         try {
             await db.collection("order").insertOne(order);
-            fs.readFile(ordersFile, 'utf8', function(error, data){
-                var orders = [];
-                if (!error) {
-                    orders = JSON.parse(data);
-                }
-                orders.push(order);
-                fs.writeFile(ordersFile, JSON.stringify(orders, null, 4), function(error){
-                    if(error) {
-                        console.log(error);
-                    }
-                });
-                response.json({ message: "Order received" });
-            });
+            response.json({ message: "Order received" });
 
             console.log("Order received");
             console.log("Name:", body.firstName + " " + body.lastName);

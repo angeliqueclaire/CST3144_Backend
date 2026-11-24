@@ -12,5 +12,13 @@
     "start": "node server.js"
   },
   "author": "Angelique",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angeliqueclaire/CST3144_Backend.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angeliqueclaire/CST3144_Backend/issues"
+  },
+  "homepage": "https://github.com/angeliqueclaire/CST3144_Backend#readme"
 }

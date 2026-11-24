@@ -49,13 +49,15 @@ async function startServer() {
         var userRoutes = require("./routes/userRoutes");
         var apiRouter = userRoutes(db);
 
-        app.use("/api", apiRouter);
+        app.use("/collection", apiRouter);
 
         app.use(express.static(staticPath));
 
         app.listen(app.get('port'), () => {
             console.log(`Server listening on port ${app.get('port')}`);
         });
+
+        
 
     } catch (error) {
         console.error('Failed to start server:', error);
