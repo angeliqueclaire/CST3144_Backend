@@ -5,16 +5,16 @@ module.exports = function(db) {
     var api = express.Router();
 
     var activity = [
-        {id: 1001, class: 'Football', rating: 5, location: 'Dubai, Al Wasl Sports Club', price: 110, image: 'static/football.png', availableInventory: 10, quantity: 0},
-        {id: 1002, class: 'Basketball', rating: 3,location: 'Dubai, JSS Private School', price: 120, image: 'static/basketball.png', availableInventory: 10, quantity: 0},
-        {id: 1003, class: 'Swimming', rating: 5, location: 'Abu Dhabi, Country Club', price: 130, image: 'static/swimming.png', availableInventory: 10, quantity: 0},
-        {id: 1004, class: 'Tennis', rating: 3, location: 'Dubai, Al Naayat Street', price: 140, image: 'static/tennis.png', availableInventory: 10, quantity: 0},
-        {id: 1005, class: 'Cricket', rating: 4, location: 'Abu Dhabi, Zayed  City', price: 150, image: 'static/cricket.png', availableInventory: 10, quantity: 0},
-        {id: 1006, class: 'Dance', rating: 3, location: 'Sharjah, Wanderers Club', price: 160, image: 'static/dance.png', availableInventory: 10, quantity: 0},
-        {id: 1007, class: 'Singing', rating: 2, location: 'Dubai, Al Wasl Sports Club', price: 170, image: 'static/singing.png', availableInventory: 10, quantity: 0},
-        {id: 1008, class: 'Gymnastics', rating: 4, location: 'Sharjah, Baseline Academy', price: 180, image: 'static/gymnastics.png', availableInventory: 10, quantity: 0},
-        {id: 1009, class: 'Ice Hockey', rating: 3, location: 'Abu Dhabi, Zayed City', price: 190, image: 'static/ice_hockey.png', availableInventory: 10, quantity: 0},
-        {id: 1010, class: 'Karate', rating: 1, location: 'Sharjah, Wanderers Club', price: 200, image: 'static/karate.png', availableInventory: 10, quantity: 0}
+        {id: 1001, class: 'Football', rating: 5, location: 'Dubai, Al Wasl Sports Club', price: 110, image: 'football.png', availableInventory: 10, quantity: 0},
+        {id: 1002, class: 'Basketball', rating: 3,location: 'Dubai, JSS Private School', price: 120, image: 'basketball.png', availableInventory: 10, quantity: 0},
+        {id: 1003, class: 'Swimming', rating: 5, location: 'Abu Dhabi, Country Club', price: 130, image: 'swimming.png', availableInventory: 10, quantity: 0},
+        {id: 1004, class: 'Tennis', rating: 3, location: 'Dubai, Al Naayat Street', price: 140, image: 'tennis.png', availableInventory: 10, quantity: 0},
+        {id: 1005, class: 'Cricket', rating: 4, location: 'Abu Dhabi, Zayed  City', price: 150, image: 'cricket.png', availableInventory: 10, quantity: 0},
+        {id: 1006, class: 'Dance', rating: 3, location: 'Sharjah, Wanderers Club', price: 160, image: 'dance.png', availableInventory: 10, quantity: 0},
+        {id: 1007, class: 'Singing', rating: 2, location: 'Dubai, Al Wasl Sports Club', price: 170, image: 'singing.png', availableInventory: 10, quantity: 0},
+        {id: 1008, class: 'Gymnastics', rating: 4, location: 'Sharjah, Baseline Academy', price: 180, image: 'gymnastics.png', availableInventory: 10, quantity: 0},
+        {id: 1009, class: 'Ice Hockey', rating: 3, location: 'Abu Dhabi, Zayed City', price: 190, image: 'ice_hockey.png', availableInventory: 10, quantity: 0},
+        {id: 1010, class: 'Karate', rating: 1, location: 'Sharjah, Wanderers Club', price: 200, image: 'karate.png', availableInventory: 10, quantity: 0}
     ];
 
     db.collection("lesson").countDocuments()
