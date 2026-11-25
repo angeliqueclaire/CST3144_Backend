@@ -44,12 +44,9 @@ async function startServer() {
         console.log('Connected to MongoDB');
 
         var db = client.db('AFTRNEST');
-        var brief = "Backend Collections";
         
         var userRoutes = require("./routes/userRoutes");
         var apiRouter = userRoutes(db);
-
-        app.use("/", brief);
         
         app.use("/collection", apiRouter);
 
@@ -57,6 +54,7 @@ async function startServer() {
             console.log(`Server listening on port ${app.get('port')}`);
         });
 
+        return response("Backend Collections")
         
 
     } catch (error) {
