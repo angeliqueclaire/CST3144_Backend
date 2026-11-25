@@ -25,15 +25,6 @@ module.exports = function(db) {
         }
     });
 
-    api.get("/", async function(request, response) {
-        try {
-            response.json("Backend Collections");
-        } catch(error) {
-            console.log(error);
-            response.status(500).json("Backend not connected");
-        }
-    });
-
     api.get("/lessons", async function(request, response) {
         try {
             var lessons = await db.collection("lesson").find().toArray();

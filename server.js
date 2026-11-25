@@ -44,10 +44,13 @@ async function startServer() {
         console.log('Connected to MongoDB');
 
         var db = client.db('AFTRNEST');
+        var brief = "Backend Collections";
         
         var userRoutes = require("./routes/userRoutes");
         var apiRouter = userRoutes(db);
 
+        app.use("/", brief);
+        
         app.use("/collection", apiRouter);
 
         app.listen(app.get('port'), () => {
