@@ -35,7 +35,9 @@ app.use(function(request, response, next) {
 
 app.use(express.json());
 
-app.use('/', homeRoutes);
+app.get('/', function(request, response) {
+    console.log("Conneted frontend");
+});
 
 app.set('port', port);
 
