@@ -54,8 +54,9 @@ async function startServer() {
             console.log(`Server listening on port ${app.get('port')}`);
         });
 
-        return response("Backend Collections")
-        
+        app.use("/", function(request, response) {
+            response.send("Backend Collections");
+        });
 
     } catch (error) {
         console.error('Failed to start server:', error);
