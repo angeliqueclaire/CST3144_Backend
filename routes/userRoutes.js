@@ -88,7 +88,8 @@ module.exports = function(db) {
                     {message: "Lesson not found"}
                 );
             }
-
+            console.log("PUT body:", body);
+            
             await db.collection("lesson").updateOne(
                 {id: lessonId},
                 {$set: body}
