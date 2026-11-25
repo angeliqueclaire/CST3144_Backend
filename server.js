@@ -34,6 +34,8 @@ app.use(function(request, response, next) {
 
 app.use(express.json());
 
+app.use(express.static(staticPath));
+
 app.set('port', port);
 
 async function startServer() {
@@ -47,8 +49,6 @@ async function startServer() {
         var apiRouter = userRoutes(db);
 
         app.use("/collection", apiRouter);
-
-        app.use(express.static(staticPath));
 
         app.listen(app.get('port'), () => {
             console.log(`Server listening on port ${app.get('port')}`);
