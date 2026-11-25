@@ -6,7 +6,7 @@ const port = process.env.PORT || 10000 || "0.0.0.0";
 var app = express();
 
 
-var staticPath = path.resolve(__dirname,"../CST3144_Frontend_Split");
+var staticPath = path.resolve(__dirname,"../CST3144_Frontend");
 
 const url = 'mongodb+srv://angeliqueclaire22_db_user:EBWMyEHqZy9XzAim@aftrnest.n8kuxyg.mongodb.net/';
 const client= new MongoClient(url);
