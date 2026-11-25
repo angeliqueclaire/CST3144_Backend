@@ -32,7 +32,7 @@ module.exports = function(db) {
     .then(function(count) {
         if(count == 0) {
             db.collection("lesson").insertMany(activity);
-            console.log("Lessons added tp MongoDB");
+            console.log("Lessons added to MongoDB");
         }
     });
 

@@ -7,7 +7,7 @@ var app = express();
 
 var homeRoutes = require("./routes/homeRoutes");
 
-var staticPath = path.resolve(__dirname,"../Frontend");
+var staticPath = path.resolve(__dirname,"../CST3144_Frontend_Split");
 
 const url = 'mongodb+srv://angeliqueclaire22_db_user:EBWMyEHqZy9XzAim@aftrnest.n8kuxyg.mongodb.net/';
 const client= new MongoClient(url);
