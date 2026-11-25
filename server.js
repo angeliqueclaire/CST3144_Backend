@@ -5,7 +5,6 @@ var path = require("path");
 const port = process.env.PORT || 3000;
 var app = express();
 
-var homeRoutes = require("./routes/homeRoutes");
 
 var staticPath = path.resolve(__dirname,"../CST3144_Frontend_Split");
 
