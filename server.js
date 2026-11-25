@@ -2,7 +2,7 @@ var express = require("express");
 const { MongoClient } = require('mongodb');
 var path = require("path");
 
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 10000 || "0.0.0.0";
 var app = express();
 
 
