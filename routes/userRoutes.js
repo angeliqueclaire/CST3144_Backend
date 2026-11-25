@@ -1,19 +1,8 @@
 var express = require('express');
-var ALLOWED_IPS = ["127.0.0.1", "::1","123.456.7.89"];
 var path = require("path");
 
 module.exports = function(db) {
     var api = express.Router();
-
-    api.use(function(request, response, next) {
-        console.log("User IP:", request.ip);
-        var userIsAllowed = ALLOWED_IPS.indexOf(request.ip) !== -1;
-        if(!userIsAllowed) {
-            response.status(401).send("Access denied");
-        } else {
-            next();
-        }
-    });
 
     var activity = [
         {id: 1001, class: 'Football', rating: 5, location: 'Dubai, Al Wasl Sports Club', price: 110, image: 'images/football.png', availableInventory: 10, quantity: 0},
