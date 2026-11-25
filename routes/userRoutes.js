@@ -25,6 +25,15 @@ module.exports = function(db) {
         }
     });
 
+    api.get("/", async function(request, response) {
+        try {
+            response.json("Backend Collections");
+        } catch(error) {
+            console.log(error);
+            response.status(500).json("Backend not connected");
+        }
+    });
+
     api.get("/lessons", async function(request, response) {
         try {
             var lessons = await db.collection("lesson").find().toArray();
@@ -88,8 +97,7 @@ module.exports = function(db) {
                     {message: "Lesson not found"}
                 );
             }
-            console.log("PUT body:", body);
-            
+
             await db.collection("lesson").updateOne(
                 {id: lessonId},
                 {$set: body}
